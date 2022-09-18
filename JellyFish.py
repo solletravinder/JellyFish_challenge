@@ -80,7 +80,7 @@ class JellyFish:
     def add_instructions(self, instructions):
         self.instructions = instructions
 
-    def run_simulation(self, tank_size, Lost_coord_pos=None):
+    def run_simulation(self, tank_size, Lost_coord_pos):
         for i in self.instructions:
             if self.is_fish_lost:
                 break;
@@ -88,5 +88,7 @@ class JellyFish:
                 self.move_forward(tank_size, Lost_coord_pos)
             else:
                 self.change_orientation(i)
-        Lost_coord_pos.append(self.Lost_coord_pos)
+
+        if self.Lost_coord_pos:
+            Lost_coord_pos.append(self.Lost_coord_pos)
         return Lost_coord_pos
