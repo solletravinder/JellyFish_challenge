@@ -13,6 +13,7 @@ class JellyFish:
         self.orientation = orientation
         self.instructions = ""
         self.is_fish_lost = False
+        self.Lost_coord_pos = None
 
 
     def compare_coordinates(self, tank_coord, curr_coord):
@@ -35,12 +36,13 @@ class JellyFish:
 
         curr_coord = tuple(map(lambda i, j: i + j, self.coordinates, (x,y)))
         is_not_dead = self.compare_coordinates(tank_size, curr_coord)
-        self.coordinates = curr_coord
         if not is_not_dead:
             passed_through_already_taken_path = self.compare_coordinates_with_last_fish(curr_coord, Lost_coord_pos)
             if not passed_through_already_taken_path:
-                Lost_coord_pos.append(curr_coord)
+                self.Lost_coord_pos = curr_coord
                 self.is_fish_lost = True
+        else:
+            self.coordinates = curr_coord
         return 
 
     def compare_coordinates_with_last_fish(self, curr_coord, lost_coord_pos):
@@ -78,7 +80,7 @@ class JellyFish:
     def add_instructions(self, instructions):
         self.instructions = instructions
 
-    def run_simulation(self, tank_size, Lost_coord_pos):
+    def run_simulation(self, tank_size, Lost_coord_pos=None):
         for i in self.instructions:
             if self.is_fish_lost:
                 break;
@@ -86,3 +88,5 @@ class JellyFish:
                 self.move_forward(tank_size, Lost_coord_pos)
             else:
                 self.change_orientation(i)
+        Lost_coord_pos.append(self.Lost_coord_pos)
+        return Lost_coord_pos

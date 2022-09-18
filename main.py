@@ -7,6 +7,7 @@ class FishTank:
     def __init__(self, x, y):
         self.SIZE = (x, y)
         self.fish_list = []
+        self.Lost_coord_pos = []
 
     def add_fish(self, x, y, position):
         JF = JellyFish(x, y, position)
@@ -14,10 +15,9 @@ class FishTank:
         return JF
 
     def run_simulation(self):
-        Lost_coord_pos = []
         for a_JF in self.fish_list:
             # curr_fish_coord_position = ""
-            a_JF.run_simulation(self.SIZE, Lost_coord_pos)
+            self.Lost_coord_pos = a_JF.run_simulation(self.SIZE, self.Lost_coord_pos)
             is_fish_lost = a_JF.is_fish_lost
             curr_fish_final_coord_position = "".join(list(map(str, a_JF.coordinates)) +[a_JF.orientation, "LOST" if is_fish_lost else ""])
             print(curr_fish_final_coord_position)
@@ -40,4 +40,5 @@ if __name__ == '__main__':
         JF.add_instructions(instructions)
 
     if len(FT.fish_list) > 0:
+
         FT.run_simulation()
