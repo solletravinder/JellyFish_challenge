@@ -26,12 +26,12 @@ class FishTank:
 
 
 if __name__ == '__main__':
-    ftSize = map(int, list(input("Enter the coordinates of the fish tank.")))
+    ftSize = map(int, list(input("\nEnter the coordinates of the fish tank.")))
 
     FT = FishTank(*ftSize)
-    num_of_fishes = int(input("Number of fish in the tank."))
+    num_of_fishes = int(input("\nNumber of fish in the tank."))
     for i in range(0, num_of_fishes):
-        coord_instr = input("Enter the coordinates and instructions for the fish.")
+        coord_instr = input("\nEnter the coordinates and instructions for the fish.")
         coord_position, instructions = coord_instr.split()
         if float(coord_position[:2]) > MAX_COORD or len(instructions) > MAX_INSTRUCTIONS:
             break;
