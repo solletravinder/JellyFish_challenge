@@ -16,7 +16,7 @@ class JellyFish:
 
 
     def compare_coordinates(self, tank_coord, curr_coord):
-        if tank_coord[0] <= curr_coord[0] and tank_coord[1] <= curr_coord[1]:
+        if curr_coord[0] <= tank_coord[0] and curr_coord[1] <= tank_coord[1]:
             return True
         return False
 
@@ -79,7 +79,7 @@ class JellyFish:
         self.instructions = instructions
 
     def run_simulation(self, tank_size, Lost_coord_pos):
-        for i in list(self.instructions):
+        for i in self.instructions:
             if self.is_fish_lost:
                 break;
             if i == "F":
