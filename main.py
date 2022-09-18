@@ -16,7 +16,7 @@ class FishTank:
     def run_simulation(self):
         Lost_coord_pos = []
         for a_JF in self.fish_list:
-            curr_fish_coord_position = ""
+            # curr_fish_coord_position = ""
             a_JF.run_simulation(self.SIZE, Lost_coord_pos)
             is_fish_lost = a_JF.is_fish_lost
             curr_fish_final_coord_position = "".join(list(map(str, a_JF.coordinates)) +[a_JF.orientation, "LOST" if is_fish_lost else ""])

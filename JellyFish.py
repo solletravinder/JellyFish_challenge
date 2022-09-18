@@ -80,6 +80,8 @@ class JellyFish:
 
     def run_simulation(self, tank_size, Lost_coord_pos):
         for i in list(self.instructions):
+            if self.is_fish_lost:
+                break;
             if i == "F":
                 self.move_forward(tank_size, Lost_coord_pos)
             else:
