@@ -1,4 +1,8 @@
+"""
+ Contains main function
+"""
 from JellyFish import JellyFish
+
 MAX_COORD = 60
 MAX_INSTRUCTIONS = 100
 
